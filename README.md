@@ -1,2 +1,2 @@
 # HENS
-Heuristic Egg Enumerating System
+Heuristic Egg eNumerating System
