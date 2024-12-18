@@ -1,0 +1,20 @@
+stateDiagram
+  [*] --> IDLE
+  IDLE --> SET_LIGHT:Woken up.
+  SET_LIGHT --> CHECK_HEN:Light status checked.
+  CHECK_HEN --> HEN_PRESENT:Hen detected.
+  CHECK_HEN --> HEN_LEFT:Hen left.
+  CHECK_HEN --> ERROR:Sensor error.
+  CHECK_HEN --> IDLE:No hen present.
+  HEN_PRESENT --> IDLE:Valid weight updated.
+  HEN_PRESENT --> ERROR:Invalid weight.
+  HEN_LEFT --> CHECK_EGG:Significant weight change.
+  HEN_LEFT --> IDLE:No egg detected.
+  HEN_LEFT --> ERROR:Invalid weight.
+  CHECK_EGG --> EGG_LAYED:Egg weight > eggMinThreshold.
+  CHECK_EGG --> IDLE:No egg detected.
+  EGG_LAYED --> CLOUD_EXCHANGE:Egg data processed.
+  CLOUD_EXCHANGE --> IDLE:Data sent to cloud.
+  CLOUD_EXCHANGE --> ERROR:Cloud error.
+  ERROR --> IDLE:Error logged.
+

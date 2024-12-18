@@ -1,0 +1,42 @@
+---
+config:
+  themeVariables:
+    fontSize: 20px
+---
+flowchart TD
+    A(["Incomming connection"]) --> B["HTTP <br>request"]
+    B --> C["/"] & D["/egg_layed (POST)"] & H["/get_interval (GET)"] & L["/set_food (GET)"] & O["/nest_status (GET)"]
+    C --> CV["Return GTFO msg"]
+    D --> DU{"Check UUID?"}
+    DU -- Valid --> E["JSON data"]
+    DU -- Invalid --> C
+    E -- Insert db --> F["Update EGG_JUST_NOW"]
+    F --> G@{ label: "Return 'OK'" }
+    H --> HU{"Check UUID?"}
+    HU -- Valid --> I["Call API"]
+    HU -- Invalid --> C
+    I -- Parse & calc --> J["Update HOURS & SUNSET"]
+    J --> K["Return int;int"]
+    L --> LU{"Check UUID?"}
+    LU -- Valid --> M["Parse quantity"]
+    LU -- Invalid --> C
+    M --> N["Return quantity"]
+    O --> OU{"Check UUID?"}
+    OU -- Valid --> P["Get todays egg count"]
+    OU -- Invalid --> C
+    P --> Q["Get latest egg and lay time"]
+    Q --> R["Return JSON data"]
+    C@{ shape: lean-r}
+    D@{ shape: lean-r}
+    H@{ shape: lean-r}
+    L@{ shape: lean-r}
+    O@{ shape: lean-r}
+    CV@{ shape: lean-r}
+    G@{ shape: lean-r}
+    K@{ shape: lean-r}
+    R@{ shape: lean-r}
+    style C fill:#f9f,stroke:#333,stroke-width:2px
+    style D fill:#f96,stroke:#333,stroke-width:2px
+    style H fill:#6f9,stroke:#333,stroke-width:2px
+    style L fill:#9f6,stroke:#333,stroke-width:2px
+    style O fill:#69f,stroke:#333,stroke-width:2px

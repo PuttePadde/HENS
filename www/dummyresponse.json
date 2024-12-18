@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "data": {
+    "egg_count": 18,
+    "egg_just_now": false,
+    "last_egg_datetime": "2024-11-13T08:45:00Z",
+    "food_quantity": "350 gram",
+    "light_status": "on",
+    "nest_status": "occupied"
+  },
+  "timestamp": "2024-11-13T12:00:00Z"
+}

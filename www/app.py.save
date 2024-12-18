@@ -1,0 +1,67 @@
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+STATUS = "success"
+EGG_COUNT = 15
+EGG_JUST_NOW = False
+LAST_EGG_DATETIME = "2024-11-13T08:45:00Z"
+FOOD_QUANTITY = 3.5
+LIGHT_STATUS = "on"
+NEST_STATUS = "occupied"
+TIMESTAMP = "2024-11-13T12:00:00Z"
+
+@app.route("/")
+def hello_world():
+    return "<p>Hello, World!</p>"
+
+@app.route('/set_food', methods=['GET'])
+def set_food():
+    global FOOD_QUANTITY  # Tillad ændring af den globale variabel
+    
+    # Hent den nye mængde fra forespørgselsparameteren 'quantity'
+    quantity = request.args.get('quantity', type=float)
+    
+    # Hvis 'quantity' er specificeret, opdater FOOD_QUANTITY
+    if quantity is not None:
+        FOOD_QUANTITY = quantity
+        return jsonify({"status": "success", "message": "Food quantity updated", "new_food_quantity": FOOD_QUANTITY})
+    else:
+        # Returnér en fejl, hvis 'quantity' parameteren ikke findes
+        return jsonify({"status": "error", "message": "Quantity parameter is required"}), 400
+
+@app.route("/nest_status")
+def nest_status():
+    data = {
+        "status": STATUS,
+        "data": {
+            "egg_count": EGG_COUNT,
+            "egg_just_now": EGG_JUST_NOW,
+            "last_egg_datetime": LAST_EGG_DATETIME,
+            "food_quantity": FOOD_QUANTITY,
+            "light_status": LIGHT_STATUS,
+            "nest_status": NEST_STATUS
+        },
+        "timestamp": TIMESTAMP
+    }
+
+    # Returnér som JSON-respons
+    return jsonify(data)
+
+@app.route("/egg_layed")
+def egg_layed():
+    data = {
+        "status": STATUS,
+        "data": {
+            "egg_count": EGG_COUNT,
+            "egg_just_now": EGG_JUST_NOW,
+            "last_egg_datetime": LAST_EGG_DATETIME,
+            "food_quantity": FOOD_QUANTITY,
+            "light_status": LIGHT_STATUS,
+            "nest_status": NEST_STATUS
+        },
+        "timestamp": TIMESTAMP
+    }
+
+    # Returnér som JSON-respons
+    return jsonify(data)

@@ -1,0 +1,22 @@
+{
+    "extensions.ignoreRecommendations": true,
+    "C_Cpp.default.configurationProvider": "particle.particle-vscode-core",
+    "files.associations": {
+        "*.ino": "cpp",
+        "ostream": "cpp",
+        "sstream": "cpp",
+        "streambuf": "cpp",
+        "version": "cpp",
+        "algorithm": "cpp",
+        "array": "cpp",
+        "istream": "cpp",
+        "locale": "cpp",
+        "memory": "cpp",
+        "tuple": "cpp",
+        "variant": "cpp",
+        "__functional_base": "cpp",
+        "utility": "cpp"
+    },
+    "particle.targetPlatform": "p2",
+    "particle.firmwareVersion": "5.8.0"
+}
