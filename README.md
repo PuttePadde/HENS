@@ -18,5 +18,6 @@ Mappeforklaring:
 * /www - Webserver App udviklet i Python/Flask.
 * /HENS - Hens Controller software udviklet i C++/Particle.
 * /mermaidcharts - Diverse diagrammer i mermaid syntax.
+* /celltest - 3. parts kalibreringskode mm.
 
 
